@@ -1,22 +1,28 @@
 export function formatDate(date: Date, format: string): string {
+  const hours12 = date.getHours() % 12 || 12; // Convert to 12-hour format
+  const ampm = date.getHours() >= 12 ? "PM" : "AM"; // Determine AM/PM
+
   const map: { [key: string]: string } = {
     YYYY: date.getFullYear().toString(),
+    YY: date.getFullYear().toString().slice(-2), // Two-digit year
     MM: (date.getMonth() + 1).toString().padStart(2, "0"),
     DD: date.getDate().toString().padStart(2, "0"),
-    HH: date.getHours().toString().padStart(2, "0"),
+    HH: date.getHours().toString().padStart(2, "0"), // 24-hour format
+    hh: hours12.toString().padStart(2, "0"), // 12-hour format
     mm: date.getMinutes().toString().padStart(2, "0"),
     ss: date.getSeconds().toString().padStart(2, "0"),
-    month: getMonthName(date.getMonth()),
-    fullMonth: getFullMonthName(date.getMonth()),
+    at: ampm, // AM/PM
+    month: getMonthName(date.getMonth()), // Abbreviated month
+    fullMonth: getFullMonthName(date.getMonth()), // Full month
   };
 
   return format.replace(
-    /YYYY|MM|DD|HH|mm|ss|month|fullMonth/g, // Add 'fullMonth' here
+    /YYYY|YY|MM|DD|HH|hh|mm|ss|at|month|fullMonth/g,
     (matched) => map[matched]
   );
 }
 
-// Helper function to get the month name
+// Helper function to get the abbreviated month name
 function getMonthName(monthIndex: number): string {
   const monthNames = [
     "Jan",
@@ -35,7 +41,7 @@ function getMonthName(monthIndex: number): string {
   return monthNames[monthIndex];
 }
 
-// Helper function to get the month name
+// Helper function to get the full month name
 function getFullMonthName(monthIndex: number): string {
   const monthNames = [
     "January",

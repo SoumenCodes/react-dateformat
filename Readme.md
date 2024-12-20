@@ -2,7 +2,7 @@
 
 `react-dateformat` is a lightweight and easy-to-use utility for formatting dates in React and Next.js applications. It supports both short and full month names and allows custom date formats. 🌟📆🎈
 
-## Installation 🚀🛠️📦
+## Installation 🚀�️📦
 
 Install the package using npm:
 
@@ -59,7 +59,7 @@ const formattedDate = formatDate(
 console.log(formattedDate); // Output: 17-12-2024 15:30:45
 ```
 
-#### Custom Format ✨📅🛠️
+#### Custom Format ✨📅🔧️
 
 You can combine any placeholders to create your own custom formats:
 
@@ -68,16 +68,46 @@ const formattedDate = formatDate(new Date(), "YYYY/MM/DD - HH:mm");
 console.log(formattedDate); // Output: 2024/12/17 - 15:45 (based on current date/time)
 ```
 
+#### Format with Two-Digit Year (YY) ✂️⌐⏳
+
+```typescript
+const formattedDate = formatDate(new Date("2024-12-17"), "DD-MM-YY");
+console.log(formattedDate); // Output: 17-12-24
+```
+
+#### Format with 12-Hour Time (hh) 🕑⏳🔄
+
+```typescript
+const formattedDate = formatDate(
+  new Date("2024-12-17T15:30:45Z"),
+  "DD-MM-YYYY hh:mm"
+);
+console.log(formattedDate); // Output: 17-12-2024 03:30
+```
+
+#### Format with AM/PM (at) ⌐☀️🌙
+
+```typescript
+const formattedDate = formatDate(
+  new Date("2024-12-17T15:30:45Z"),
+  "DD-MM-YYYY hh:mm at"
+);
+console.log(formattedDate); // Output: 17-12-2024 03:30 PM
+```
+
 ## Placeholders 📖🔤🔑
 
 | Placeholder | Description                    | Example Value |
 | ----------- | ------------------------------ | ------------- |
 | `YYYY`      | Full year                      | `2024`        |
+| `YY`        | Two-digit year                 | `24`          |
 | `MM`        | Month (zero-padded)            | `12`          |
 | `DD`        | Day of the month (zero-padded) | `17`          |
 | `HH`        | Hour (24-hour format)          | `15`          |
+| `hh`        | Hour (12-hour format)          | `03`          |
 | `mm`        | Minutes                        | `30`          |
 | `ss`        | Seconds                        | `45`          |
+| `at`        | AM/PM                          | `PM`          |
 | `month`     | Short month name               | `Dec`         |
 | `fullMonth` | Full month name                | `December`    |
 
@@ -87,7 +117,7 @@ We welcome contributions! If you have suggestions, feature requests, or bug repo
 
 ## License 📜✔️🌍
 
-This project is licensed under the MIT License. 🎓📄🔓
+This project is licensed under the MIT License. 🎓📜🔓
 
 ---
 
@@ -97,4 +127,4 @@ If you find this package useful, please consider starring the repository on GitH
 
 ---
 
-Happy Coding! 🎉💻✨
+Happy Coding! Remember Your Developer Soumen 🎉💻✨
